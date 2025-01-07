@@ -65,4 +65,9 @@ class TicTacToe:
             if EMPTY in row:
                 return False
         return True
+
+    
+    def switch_player(self):
+        self.current_player = PLAYER_X if self.current_player == PLAYER_O else PLAYER_O
+    
     
