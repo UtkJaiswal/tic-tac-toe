@@ -69,5 +69,69 @@ class TicTacToe:
     
     def switch_player(self):
         self.current_player = PLAYER_X if self.current_player == PLAYER_O else PLAYER_O
+
+
+    def ai_move(self):
+        best_score = -float('inf')
+        best_move = None
+        for row in range(3):
+            for col in range(3):
+
+                if self.board[row][col] == EMPTY:
+
+                    self.board[row][col] = PLAYER_O
+                    score = self.minimax(self.board, False)
+                    self.board[row][col] = EMPTY
+
+                    if score > best_score:
+
+                        best_score = score
+                        best_move = (row, col)
+                        
+        return best_move
+
+    
+    def minimax(self, board, is_maximizing):
+        
+        if self.check_win():
+
+            if is_maximizing:
+                return 1
+
+            else:
+                return 0
+
+        if self.check_draw():
+            return 0
+        
+        if is_maximizing:
+            best_score = -float('inf')
+            for row in range(3):
+                for col in range(3):
+
+                    if board[row][col] == EMPTY:
+                        board[row][col] = PLAYER_O
+
+                        score = self.minimax(board, False)
+                        board[row][col] = EMPTY
+
+                        best_score = max(score, best_score)
+
+            return best_score
+
+        else:
+
+            best_score = float('inf')
+
+            for row in range(3):
+                for col in range(3):
+
+                    if board[row][col] == EMPTY:
+                        board[row][col] = PLAYER_X
+                        score = self.minimax(board, True)
+                        board[row][col] = EMPTY
+                        best_score = min(score, best_score)
+                        
+            return best_score
     
     
