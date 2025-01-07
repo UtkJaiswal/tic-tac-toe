@@ -52,11 +52,17 @@ class TicTacToe:
         
         return False
 
-
+        
     def check_draw(self):
         for row in self.board:
             if EMPTY in row:
                 return False
         return True
 
+
+    def check_draw(self):
+        for row in self.board:
+            if EMPTY in row:
+                return False
+        return True
     
