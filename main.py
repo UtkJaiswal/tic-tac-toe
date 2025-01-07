@@ -198,4 +198,11 @@ def choose_mode():
         print("Invalid mode. Defaulting to two-player mode.")
         return 'two-player'
     return mode
+
+
+
+if __name__ == "__main__":
+    mode = choose_mode()
+    game = TicTacToe(mode)
+    game.play_game()
     
