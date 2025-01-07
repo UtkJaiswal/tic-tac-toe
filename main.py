@@ -131,7 +131,64 @@ class TicTacToe:
                         score = self.minimax(board, True)
                         board[row][col] = EMPTY
                         best_score = min(score, best_score)
-                        
+
             return best_score
+
+
+    def play_game(self):
+
+        while not self.game_over:
+
+            self.display_board()
+            
+            if self.mode == 'two-player' or self.current_player == PLAYER_X:
+
+                print(f"Player {self.current_player}'s turn:")
+
+                row, col = map(int, input("Enter row and column (0-2): ").split())
+
+                if self.make_move(row, col):
+
+                    if self.check_win():
+
+                        self.display_board()
+                        print(f"Player {self.current_player} wins!")
+                        self.game_over = True
+
+                    elif self.check_draw():
+
+                        self.display_board()
+                        print("It's a draw!")
+                        self.game_over = True
+
+                    else:
+
+                        self.switch_player()
+
+                else:
+
+                    print("Invalid move. Try again.")
+
+            else:
+
+                print(f"Player {self.current_player}'s turn (AI):")
+                row, col = self.ai_move()
+                self.make_move(row, col)
+
+                if self.check_win():
+
+                    self.display_board()
+                    print(f"Player {self.current_player} wins!")
+                    self.game_over = True
+
+                elif self.check_draw():
+
+                    self.display_board()
+                    print("It's a draw!")
+                    self.game_over = True
+
+                else:
+                    
+                    self.switch_player()
     
     
