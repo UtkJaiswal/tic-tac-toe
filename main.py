@@ -8,3 +8,14 @@ class TicTacToe:
         self.current_player = PLAYER_X
         self.game_over = False
         self.mode = mode
+
+
+    def display_board(self):
+        print("\n")
+        for row in self.board:
+            print(" | ".join(row))
+            print("---------")
+
+        print("\n")
+
+        
