@@ -188,7 +188,14 @@ class TicTacToe:
                     self.game_over = True
 
                 else:
-                    
+
                     self.switch_player()
     
+
+def choose_mode():
+    mode = input("Choose game mode (two-player/single-player): ").strip().lower()
+    if mode not in ['two-player', 'single-player']:
+        print("Invalid mode. Defaulting to two-player mode.")
+        return 'two-player'
+    return mode
     
