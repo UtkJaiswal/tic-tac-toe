@@ -36,6 +36,7 @@ A simple terminal-based Tic-Tac-Toe game built in Python. The game supports both
 - The move is valid only if:
 - The row and column values are between `0` and `2`.
 - The selected cell is empty.
+- Enter row index followed by column index space seperated as input
 
 ### Board Display
 After every move, the updated board will be displayed:
